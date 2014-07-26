@@ -1,3 +1,3 @@
 dependencies: \
-  /Users/KentarOu/Desktop/Xcode_Project/2014_3月/CutomActionSheet/CutomActionSheet/main.m \
-  /Users/KentarOu/Desktop/Xcode_Project/2014_3月/CutomActionSheet/CutomActionSheet/AppDelegate.h
+  /Users/KentarOu/Desktop/My_Github/CutomActionSheet\ for\ iPhone/CutomActionSheet/CutomActionSheet/main.m \
+  /Users/KentarOu/Desktop/My_Github/CutomActionSheet\ for\ iPhone/CutomActionSheet/CutomActionSheet/AppDelegate.h

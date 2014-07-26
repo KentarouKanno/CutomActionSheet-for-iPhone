@@ -60,13 +60,18 @@
 
 - (void)makePicker
 {
-    // 引数の文字列に「.」「年」「月」「日」「時」「分」があったら取り除く
-    tmpString = [tmpString stringByReplacingOccurrencesOfString:@"." withString:@""];
-    tmpString = [tmpString stringByReplacingOccurrencesOfString:@"年" withString:@""];
-    tmpString = [tmpString stringByReplacingOccurrencesOfString:@"月" withString:@""];
-    tmpString = [tmpString stringByReplacingOccurrencesOfString:@"日" withString:@""];
-    tmpString = [tmpString stringByReplacingOccurrencesOfString:@"時" withString:@""];
-    tmpString = [tmpString stringByReplacingOccurrencesOfString:@"分" withString:@""];
+    // pickerの値を変更しないで設定を押下した場合の為に文字列をセット
+    self.selectString = tmpString;
+    
+    if (tmpString) {
+        // 引数の文字列に「.」「年」「月」「日」「時」「分」があったら取り除く
+        tmpString = [tmpString stringByReplacingOccurrencesOfString:@"年" withString:@""];
+        tmpString = [tmpString stringByReplacingOccurrencesOfString:@"月" withString:@""];
+        tmpString = [tmpString stringByReplacingOccurrencesOfString:@"日" withString:@""];
+        tmpString = [tmpString stringByReplacingOccurrencesOfString:@"時" withString:@""];
+        tmpString = [tmpString stringByReplacingOccurrencesOfString:@"分" withString:@""];
+        tmpString = [tmpString stringByReplacingOccurrencesOfString:@"." withString:@""];
+    }
     
     
     if (AS_Type < 5) {
@@ -89,6 +94,7 @@
         // DatePickerを生成
         datePicker = [UIDatePicker new];
         datePicker.date = [NSDate date];
+    
         
         switch (AS_Type) {
             case ActionSheetFormat_Date:
@@ -117,8 +123,10 @@
             default:
                 break;
         }
+        if (tmpString) {
+            datePicker.date = [df dateFromString:tmpString];
+        }
         
-        datePicker.date = [df dateFromString:tmpString];
         [datePicker addTarget:self
                        action:@selector(DatePickerValueChanged:)
              forControlEvents:UIControlEventValueChanged];
@@ -430,7 +438,7 @@
     self.selectString = [df stringFromDate:datePicker.date];
 }
 
-#pragma mark- Get PickdrString
+#pragma mark- Get PickerString
 
 - (NSString*)getSelectString
 {

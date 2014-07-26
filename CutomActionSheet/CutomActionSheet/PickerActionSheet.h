@@ -21,6 +21,7 @@ typedef enum : NSInteger
     ActionSheetFormat_Time,
     ActionSheetFormat_DateAndTime,
     ActionSheetFormat_CountDownTimer
+    
 }ActionSheet_Type;
 
 @interface PickerActionSheet : UIActionSheet<UIPickerViewDataSource,UIPickerViewDelegate>
